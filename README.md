@@ -68,21 +68,32 @@ python scripts/fork_detect.py --folder path/to/skeletons/
 python scripts/fork_detect.py --folder path/to/skeletons/ --out results.csv
 ```
 
-The folder mode picks up files ending in `_skeleton.ply` and writes one row
-per tree to a CSV with columns `name, is_forked, base_trunk_height_m,
-n_forks, status, error`. Trees that fail (unreadable PLY, disconnected
-skeleton, and so on) are recorded with `status=failed` and the run continues.
+In folder mode, the tool picks up every file ending in `_skeleton.ply` and
+writes one row per tree to the output CSV. Trees that fail (unreadable PLY,
+disconnected skeleton, and so on) are recorded with `status=failed` and the run
+continues, so one bad tree does not stop the batch.
+
+The CSV has the following columns:
+
+| Column | Description |
+|---|---|
+| `name` | Tree identifier, taken from the skeleton filename. |
+| `is_forked` | Fork decision: `True` if a fork was detected, `False` otherwise. |
+| `base_trunk_height_m` | Base-trunk height in metres: the vertical span of the trunk path from the base to the lowest fork. Empty for non-forked trees. |
+| `n_forks` | Number of forks detected in the tree. |
+| `status` | `ok` if the tree was processed successfully, `failed` if it could not be. |
+| `error` | Failure reason when `status=failed`; empty otherwise. |
 
 ## Parameters
 
 The three fork-detection thresholds are in `config.py`; values match the
 manuscript.
 
-| Parameter | config key | Value |
-|---|---|---|
-| Path-length threshold `T_L` | `min_path_length_threshold` | 4.0 m |
-| Vertical-gain threshold `T_H` | `min_vertical_gain_threshold` | 3.0 m |
-| Child branches for a fork | `n_child_nodes_needed_for_fork` | 2 |
+| Parameter | config key | Default Value | Role |
+|---|---|---|---|
+| Child branches for a fork | `n_child_nodes_needed_for_fork` | 2 | Minimum child branches a node needs to be considered a fork candidate |
+| Path-length threshold `T_L` | `min_path_length_threshold` | 4.0 m | Minimum cumulative length of a branch's longest outward path. Rejects short twigs and spurious skeleton segments. |
+| Vertical-gain threshold `T_H` | `min_vertical_gain_threshold` | 3.0 m | Minimum height a branch must rise above the candidate node. Rejects near-horizontal branches that do not represent a competing stem. |
 
 ## Repository layout
 
