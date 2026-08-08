@@ -1,0 +1,26 @@
+LICENSE — TO BE DECIDED BEFORE RELEASE
+======================================
+
+This placeholder is intentionally not a license. Choose and insert one before
+making the repository public, and update the "license" field in CITATION.cff to
+match.
+
+Points to weigh with Antero and FGI:
+
+  * Silva Fennica requires open code and open data under a licence permitting
+    reuse, and gives Creative Commons as the example family. A CC licence
+    (e.g. CC-BY 4.0) is a natural fit for the DATA deposit.
+
+  * For the CODE, a permissive software licence (MIT or Apache-2.0) or a
+    copyleft one (GPL) are the usual choices. Note that AdTree (used upstream
+    to generate the skeleton PLYs) is GPL-licensed. This repository calls
+    AdTree only as an external tool and does not include or link its source,
+    so it does not by itself impose GPL here; but if any GPL code is later
+    vendored into this repository, the GPL terms would apply. Decide the code
+    licence deliberately rather than by default.
+
+  * Confirm with FGI that you have the right to release this code under the
+    chosen licence.
+
+Once decided, replace the entire contents of this file with the full licence
+text, and rename it to LICENSE if your chosen licence expects that filename.

@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite both the software and the paper below."
+title: "Topology-based fork detection and base-trunk height estimation from ALS point clouds"
+# TODO before release: fill in authors' full names and ORCIDs.
+authors:
+  - family-names: "TODO"
+    given-names: "Arun"
+    affiliation: "Finnish Geospatial Research Institute (FGI)"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+  - family-names: "TODO"
+    given-names: "Antero"
+    affiliation: "Finnish Geospatial Research Institute (FGI)"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+# TODO before release: set the archived version DOI (e.g. from Zenodo).
+# doi: "10.5281/zenodo.XXXXXXX"
+version: "1.0.0"
+date-released: "TODO"
+license: "TODO"   # must match LICENSE.txt once chosen
+repository-code: "TODO"   # public repository URL
+
+preferred-citation:
+  type: article
+  title: "TODO — paper title as submitted to Silva Fennica"
+  authors:
+    - family-names: "TODO"
+      given-names: "Arun"
+    - family-names: "TODO"
+      given-names: "Antero"
+  journal: "Silva Fennica"
+  year: TODO
+  # doi: "TODO"

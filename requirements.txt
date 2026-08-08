@@ -1,0 +1,12 @@
+# Python 3.10 or newer.
+# Versions below are those the code was tested against.
+numpy==2.4.4
+networkx==3.6.1
+scipy==1.17.1
+laspy==2.7.0
+matplotlib==3.10.8
+
+# External, non-pip prerequisites (see README):
+#   AdTree (TU Delft) builds the skeleton PLYs; not installed via pip.
+#   Instance segmentation / wood-leaf classification (ForestFormer3D,
+#   ResNet16FPN) are upstream; their outputs are the inputs used here.
