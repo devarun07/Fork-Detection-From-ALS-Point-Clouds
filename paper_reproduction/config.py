@@ -5,6 +5,7 @@ Data is read from $EVO_DATA_ROOT.
 
 import os
 import sys
+import importlib.util
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -12,12 +13,23 @@ PAPER_DIR = Path(__file__).resolve().parent
 RESULTS_DIR = PAPER_DIR / "results"
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
-# Import the main config so fork-detection parameters are shared, and put
-# both src trees on the path (main src/ for the pipeline, this src/ for the
-# reproduction-only modules: runner, reference, metrics).
+# Put the reproduction-only modules (runner, reference, metrics) and the main
+# tool's modules (core, ...) on the path. Reproduction modules take priority.
 sys.path.insert(0, str(REPO_ROOT))
+sys.path.insert(0, str(REPO_ROOT / "src"))
 sys.path.insert(0, str(PAPER_DIR / "src"))
-from config import FORK_DETECT_PARAMS  # noqa: F401,E402  (re-exported)
+
+# Share the fork-detection parameters with the main tool. The tool's config.py
+# is loaded by file path under a distinct module name so the two config.py
+# files never collide in sys.modules; this module stays the one named `config`.
+def _load_main_config():
+    spec = importlib.util.spec_from_file_location(
+        "fork_tool_config", REPO_ROOT / "config.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+FORK_DETECT_PARAMS = _load_main_config().FORK_DETECT_PARAMS
 
 EVO_DATA_ROOT = Path(os.environ.get("EVO_DATA_ROOT", REPO_ROOT / "sample_data"))
 
@@ -32,15 +44,9 @@ def _ds(skeleton_rel, label):
     return {"skeleton": EVO_DATA_ROOT / skeleton_rel, "label": label}
 
 
-# Three evaluation settings from the paper:
-#   manual_*  manually corrected stems (upper bound on detector quality)
-#   p1_*      ForestFormer3D with FOR-instanceV2 weights
-#   p2_*      ForestFormer3D (FGI-EMIT) + ResNet16FPN
-# For each end-to-end setting, INST = valid-instance stage, SEM = valid-
-# semantic stage.
 DATASETS = {
-    "manual_forked":   _ds("ManuallyCorrectedStems/Forked_AdTree_Output", 1),
-    "manual_unforked": _ds("ManuallyCorrectedStems/Unforked_AdTree_Output", 0),
+    "manual_forked":   _ds("ManuallyCorrectedStems/Forked_ALS_AdTree_Output", 1),
+    "manual_unforked": _ds("ManuallyCorrectedStems/Unforked_ALS_AdTree_Output", 0),
 
     "p1_INST_forked":   _ds("ForInstanceV2/ValidInstances/Forked", 1),
     "p1_INST_unforked": _ds("ForInstanceV2/ValidInstances/Unforked", 0),
@@ -53,4 +59,4 @@ DATASETS = {
     "p2_SEM_unforked":  _ds("FGI-EMIT/ValidSemantic/Unforked", 0),
 }
 
-VERBOSE = True
+VERBOSE = False
