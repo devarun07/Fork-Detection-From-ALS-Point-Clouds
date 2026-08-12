@@ -93,35 +93,35 @@ The expected layout under `$EVO_DATA_ROOT` is:
 ```text
 EvoForkedTrees/
 ├── base_trunk_reference_dict.pkl   # MLS base-trunk reference, keyed by tree
-├── forked_reference/     # MLS point clouds for the forked reference trees
+├── forked_reference/     
 │   ├── MLS_plotID_1_treeID_1.las
 │   └── ...
-├── forked_reference_base_stem/     # MLS base-stem point clouds for the forked reference trees
+├── forked_reference_base_stem/     
 │   ├── MLS_plotID_1_treeID_1.las
 │   └── ...
-├── ManuallyCorrectedStems/         # manually corrected stems (reference setting)
-│   ├── Forked_ALS_AdTree_Output/   # AdTree skeleton PLYs, forked
+├── ManuallyCorrectedStems/        
+│   ├── Forked_ALS_AdTree_Output/  
 │   │   ├── ALS_gridID_1_2_plotID_1_treeID_2_skeleton.ply
 │   │   └── ...
-│   └── Unforked_ALS_AdTree_Output/ # AdTree skeleton PLYs, unforked
+│   └── Unforked_ALS_AdTree_Output/ 
 │       ├── ALS_gridID_1_1_plotID_na_treeID_123_unforked_skeleton.ply
 │       └── ...
-├── ForInstanceV2/                  # pipeline 1 outputs
-│   ├── ValidInstances/             # trees passing instance segmentation
+├── ForInstanceV2/                 
+│   ├── ValidInstances/             
 │   │   ├── Forked/
 │   │   │   ├── ALS_gridID_1_2_plotID_1_treeID_2_cropID_1_1_1_2_skeleton.ply
 │   │   │   └── ...
 │   │   └── Unforked/
 │   │       ├── ALS_gridID_1_1_plotID_na_treeID_123_unforked_cropID_1_1_1_2_2_1_2_2_skeleton.ply
 │   │       └── ...
-│   └── ValidSemantic/              # trees passing wood-leaf classification
+│   └── ValidSemantic/              
 │       ├── Forked/
 │       │   ├── ALS_gridID_1_2_plotID_1_treeID_2_cropID_1_1_1_2_skeleton.ply
 │       │   └── ...
 │       └── Unforked/
 │           ├── ALS_gridID_1_1_plotID_na_treeID_123_unforked_cropID_1_1_1_2_2_1_2_2_skeleton.ply
 │           └── ...
-└── FGI-EMIT/                       # pipeline 2 outputs
+└── FGI-EMIT/                       
     ├── ValidInstances/
     │   ├── Forked/
     │   │   ├── ALS_gridID_1_2_plotID_1_treeID_2_cropID_1_1_1_2_skeleton.ply
