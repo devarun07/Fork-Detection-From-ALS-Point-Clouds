@@ -35,18 +35,16 @@ The code was tested on Ubuntu 24.04 LTS. The code requires Python 3.10 or newer.
 
 ## Usage
 
-One tree:
-
 ```bash
 python scripts/fork_detect.py --tree path/to/TREE_skeleton.ply
-```
-
-A folder of skeletons:
-
-```bash
-python scripts/fork_detect.py --folder path/to/skeletons/
 python scripts/fork_detect.py --folder path/to/skeletons/ --out results.csv
 ```
+
+The script runs on either a single tree or a folder of AdTree skeletons:
+
+- `--tree` takes the path to a single skeleton in binary PLY format and reports whether that tree is forked.
+- `--folder` takes a directory of skeleton PLY files and processes each one in turn.
+- `--out` takes the path of a CSV file to write the results to; omit it to print to the console instead.
 
 In folder mode, the tool picks up every file ending in `_skeleton.ply` and
 writes one row per tree to the output CSV. Trees that fail (unreadable PLY,

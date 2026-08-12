@@ -9,7 +9,6 @@ extraction.
 
 import numpy as np
 import networkx as nx
-import warnings
 
 
 def read_adtree_skeleton_ply(path: str):
@@ -66,7 +65,7 @@ def read_adtree_skeleton_ply(path: str):
 def merge_identical_xyz(xyz, rad, edges, atol=1e-8):
     """
     Merge vertices with identical coordinates. When merged vertices carry
-    different radii, the maximum is kept and a warning is printed.
+    different radii, the maximum is kept.
 
     Returns
     -------
@@ -87,12 +86,6 @@ def merge_identical_xyz(xyz, rad, edges, atol=1e-8):
     rad_u = np.full(n_unique, np.nan, dtype=float)
     for new_idx in range(n_unique):
         vals = rad[np.where(inv == new_idx)[0]]
-        if not np.allclose(vals, vals[0], atol=atol, rtol=0.0):
-            warnings.warn(
-                f"duplicate XYZ merged at new_idx={new_idx}, "
-                f"radii differ: {vals}, keeping max",
-                stacklevel=2,
-            )
         rad_u[new_idx] = np.max(vals)
 
     e = inv[edges]
