@@ -1,6 +1,5 @@
 """
-All metrics are functions of the per-tree records produced by runner.py.
-No paths, no I/O, easy to test.
+Script to print the metrics
 """
 
 import numpy as np

@@ -1,5 +1,5 @@
 """
-MLS reference loading and matching (base-trunk evaluation, deliverable 3).
+MLS reference loading and matching for base-trunk evaluation.
 
 Builds a lookup that maps an ALS tree name to its MLS reference by
 (gridID, plotID, treeID). When a queried name has plotID == 'na', the match
