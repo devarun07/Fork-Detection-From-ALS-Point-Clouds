@@ -1,13 +1,12 @@
-# Paper reproduction
+# Paper results
 
 This folder has two independent parts, with different inputs and different
 purposes.
 
 - **Reproduce the reported results.** Reads the shared AdTree skeletons and the
-  MLS reference and reproduces every table and figure in the manuscript. It is
+  MLS reference and reproduces every result in the manuscript. It is
   self-contained: no external tools or model weights are needed, only the
-  released data. This is the primary path and the record of how each reported
-  number was produced.
+  released data. 
 - **Upstream pipeline (optional).** Turns raw ALS crops into the AdTree
   skeletons that the evaluation reads. It documents how the shared skeletons
   were produced, and it is the route to apply the method to new ALS data. It
@@ -78,6 +77,7 @@ jupyter notebook reproduce_results.ipynb
 The notebook is checked in with all cells already executed, so the tables and
 figures are visible on GitHub without running anything.
 
+
 ## Upstream pipeline (optional)
 
 This part is not needed to reproduce the reported numbers. It documents how the
@@ -121,6 +121,7 @@ Prerequisites:
   https://doi.org/10.1016/j.isprsjprs.2025.07.038
 - **AdTree**, for skeletonisation.
   https://github.com/tudelft3d/AdTree
+
 
 ### Steps
 
