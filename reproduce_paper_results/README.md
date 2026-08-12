@@ -94,47 +94,47 @@ The expected layout under `$EVO_DATA_ROOT` is:
 EvoForkedTrees/
 ├── base_trunk_reference_dict.pkl   # MLS base-trunk reference, keyed by tree
 ├── forked_reference/     
-│   ├── MLS_plotID_1_treeID_1.las
+│   ├── MLS_treeID_1.las
 │   └── ...
 ├── forked_reference_base_stem/     
-│   ├── MLS_plotID_1_treeID_1.las
+│   ├── MLS_treeID_1.las
 │   └── ...
 ├── ManuallyCorrectedStems/        
 │   ├── Forked_ALS_AdTree_Output/  
-│   │   ├── ALS_gridID_1_2_plotID_1_treeID_2_skeleton.ply
+│   │   ├── ALS_treeID_1.ply
 │   │   └── ...
 │   └── Unforked_ALS_AdTree_Output/ 
-│       ├── ALS_gridID_1_1_plotID_na_treeID_123_unforked_skeleton.ply
+│       ├── ALS_treeID_2.ply
 │       └── ...
 ├── ForInstanceV2/                 
 │   ├── ValidInstances/             
 │   │   ├── Forked/
-│   │   │   ├── ALS_gridID_1_2_plotID_1_treeID_2_cropID_1_1_1_2_skeleton.ply
+│   │   │   ├── ALS_treeID_1.ply
 │   │   │   └── ...
 │   │   └── Unforked/
-│   │       ├── ALS_gridID_1_1_plotID_na_treeID_123_unforked_cropID_1_1_1_2_2_1_2_2_skeleton.ply
+│   │       ├── ALS_treeID_2.ply
 │   │       └── ...
 │   └── ValidSemantic/              
 │       ├── Forked/
-│       │   ├── ALS_gridID_1_2_plotID_1_treeID_2_cropID_1_1_1_2_skeleton.ply
+│       │   ├── ALS_treeID_1.ply
 │       │   └── ...
 │       └── Unforked/
-│           ├── ALS_gridID_1_1_plotID_na_treeID_123_unforked_cropID_1_1_1_2_2_1_2_2_skeleton.ply
+│           ├── ALS_treeID_2.ply
 │           └── ...
 └── FGI-EMIT/                       
     ├── ValidInstances/
     │   ├── Forked/
-    │   │   ├── ALS_gridID_1_2_plotID_1_treeID_2_cropID_1_1_1_2_skeleton.ply
+    │   │   ├── ALS_treeID_1.ply
     │   │   └── ...
     │   └── Unforked/
     │       ├── ALS_gridID_1_1_plotID_na_treeID_123_unforked_cropID_1_1_1_2_2_1_2_2_skeleton.ply
     │       └── ...
     └── ValidSemantic/
         ├── Forked/
-        │   ├── ALS_gridID_1_2_plotID_1_treeID_2_cropID_1_1_1_2_skeleton.ply
+        │   ├── ALS_treeID_1.ply
         │   └── ...
         └── Unforked/
-            ├── ALS_gridID_1_1_plotID_na_treeID_123_unforked_cropID_1_1_1_2_2_1_2_2_skeleton.ply
+            ├── ALS_treeID_2.ply
             └── ...
 ```
 
