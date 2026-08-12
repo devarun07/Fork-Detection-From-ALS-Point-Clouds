@@ -84,42 +84,67 @@ Runs on the outputs of the upstream pipeline.
 Set the data root to the folder holding the AdTree skeletons and the MLS
 reference:
 
-​```bash
+```bash
 export EVO_DATA_ROOT=/path/to/EvoForkedTrees
-​```
+```
 
 The expected layout under `$EVO_DATA_ROOT` is:
 
-​```text
+```text
 EvoForkedTrees/
 ├── base_trunk_reference_dict.pkl   # MLS base-trunk reference, keyed by tree
+├── forked_reference/     # MLS point clouds for the forked reference trees
+│   ├── MLS_plotID_1_treeID_1.las
+│   └── ...
 ├── forked_reference_base_stem/     # MLS base-stem point clouds for the forked reference trees
+│   ├── MLS_plotID_1_treeID_1.las
+│   └── ...
 ├── ManuallyCorrectedStems/         # manually corrected stems (reference setting)
 │   ├── Forked_ALS_AdTree_Output/   # AdTree skeleton PLYs, forked
+│   │   ├── ALS_gridID_1_2_plotID_1_treeID_2_skeleton.ply
+│   │   └── ...
 │   └── Unforked_ALS_AdTree_Output/ # AdTree skeleton PLYs, unforked
+│       ├── ALS_gridID_1_1_plotID_na_treeID_123_unforked_skeleton.ply
+│       └── ...
 ├── ForInstanceV2/                  # pipeline 1 outputs
 │   ├── ValidInstances/             # trees passing instance segmentation
 │   │   ├── Forked/
+│   │   │   ├── ALS_gridID_1_2_plotID_1_treeID_2_cropID_1_1_1_2_skeleton.ply
+│   │   │   └── ...
 │   │   └── Unforked/
+│   │       ├── ALS_gridID_1_1_plotID_na_treeID_123_unforked_cropID_1_1_1_2_2_1_2_2_skeleton.ply
+│   │       └── ...
 │   └── ValidSemantic/              # trees passing wood-leaf classification
 │       ├── Forked/
+│       │   ├── ALS_gridID_1_2_plotID_1_treeID_2_cropID_1_1_1_2_skeleton.ply
+│       │   └── ...
 │       └── Unforked/
+│           ├── ALS_gridID_1_1_plotID_na_treeID_123_unforked_cropID_1_1_1_2_2_1_2_2_skeleton.ply
+│           └── ...
 └── FGI-EMIT/                       # pipeline 2 outputs
     ├── ValidInstances/
     │   ├── Forked/
+    │   │   ├── ALS_gridID_1_2_plotID_1_treeID_2_cropID_1_1_1_2_skeleton.ply
+    │   │   └── ...
     │   └── Unforked/
+    │       ├── ALS_gridID_1_1_plotID_na_treeID_123_unforked_cropID_1_1_1_2_2_1_2_2_skeleton.ply
+    │       └── ...
     └── ValidSemantic/
         ├── Forked/
+        │   ├── ALS_gridID_1_2_plotID_1_treeID_2_cropID_1_1_1_2_skeleton.ply
+        │   └── ...
         └── Unforked/
-​```
+            ├── ALS_gridID_1_1_plotID_na_treeID_123_unforked_cropID_1_1_1_2_2_1_2_2_skeleton.ply
+            └── ...
+```
 
 Each leaf folder under a pipeline holds one `<name>_skeleton.ply` per tree, produced by the upstream skeletonisation step. `base_trunk_reference_dict.pkl` and `forked_reference_base_stem/` supply the MLS reference used for the base-trunk RMSE. The exact paths are defined in `config.DATASETS` and at the top of `config.py`, so edit them there if your folder names differ.
 
 Then open the notebook:
 
-​```bash
+```bash
 jupyter notebook reproduce.ipynb
-​```
+```
 
 
 ## Notebook
