@@ -167,11 +167,7 @@ python src/las_to_xyz.py <stem_points>.las <tree>.xyz
 ```
 
 **6. Skeletonisation with AdTree.** Run its command-line binary on the `.xyz`
-from step 5, writing one `<name>_skeleton.ply` per tree to an output folder:
-
-```bash
-./AdTree <tree>.xyz <output_folder>/ -s
-```
+from step 5, writing one `<name>_skeleton.ply` per tree to an output folder. Follow the instructions in the repository for run command.
 
 **7. Fork detection.** The skeletons from step 6 are the input to the
 fork-detection tool. Run it on the folder of skeletons:
