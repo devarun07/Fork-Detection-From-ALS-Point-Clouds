@@ -92,38 +92,29 @@ The expected layout under `$EVO_DATA_ROOT` is:
 
 ```text
 EvoForkedTrees/
-├── base_trunk_reference_dict.pkl   # MLS base-trunk reference, keyed by tree
-├── forked_reference/     
-│   ├── MLS_treeID_1.las
-├── forked_reference_base_stem/     
-│   ├── MLS_treeID_1.las
-├── ManuallyCorrectedStems/        
-│   ├── Forked_ALS_AdTree_Output/  
-│   │   ├── ALS_treeID_1.ply
-│   └── Unforked_ALS_AdTree_Output/ 
-│       ├── ALS_treeID_2.ply
-├── ForInstanceV2/                 
-│   ├── ValidInstances/             
+├── base_trunk_reference_dict.pkl       # MLS base-trunk reference, keyed by tree
+├── forked_reference/
+│   └── MLS_treeID_1.las
+├── forked_reference_base_stem/
+│   └── MLS_treeID_1.las
+├── ManuallyCorrectedStems/             # manually corrected stems (reference setting)
+│   ├── Forked_ALS_AdTree_Output/
+│   │   └── ALS_treeID_1.ply
+│   └── Unforked_ALS_AdTree_Output/
+├── ForInstanceV2/                      # pipeline 1 outputs
+│   ├── ValidInstances/                 # trees passing instance segmentation
 │   │   ├── Forked/
-│   │   │   ├── ALS_treeID_1.ply
 │   │   └── Unforked/
-│   │       ├── ALS_treeID_2.ply
-│   └── ValidSemantic/              
+│   └── ValidSemantic/                  # trees passing wood-leaf classification
 │       ├── Forked/
-│       │   ├── ALS_treeID_1.ply
 │       └── Unforked/
-│           ├── ALS_treeID_2.ply
-└── FGI-EMIT/                       
+└── FGI-EMIT/                           # pipeline 2 outputs
     ├── ValidInstances/
     │   ├── Forked/
-    │   │   ├── ALS_treeID_1.ply
     │   └── Unforked/
-    │       ├── ALS_treeID_2.ply
     └── ValidSemantic/
         ├── Forked/
-        │   ├── ALS_treeID_1.ply
         └── Unforked/
-            ├── ALS_treeID_2.ply
 ```
 
 Each leaf folder under a pipeline holds one `<name>_skeleton.ply` per tree, produced by the upstream skeletonisation step. `base_trunk_reference_dict.pkl` and `forked_reference_base_stem/` supply the MLS reference used for the base-trunk RMSE. The exact paths are defined in `config.DATASETS` and at the top of `config.py`, so edit them there if your folder names differ.
