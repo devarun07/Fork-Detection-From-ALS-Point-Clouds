@@ -3,8 +3,7 @@ Skeleton-graph construction from an AdTree PLY.
 
 Reads the binary AdTree skeleton, merges coincident vertices, builds an
 undirected graph weighted by edge length, picks the lowest node as the root,
-and orients every edge from tips toward the root so that a node's children are
-its predecessors. This is the graph consumed by fork detection and base-trunk
+and orients every edge from tips toward the root. This is the graph consumed by fork detection and base-trunk
 extraction.
 """
 
