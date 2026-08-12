@@ -84,17 +84,42 @@ Runs on the outputs of the upstream pipeline.
 Set the data root to the folder holding the AdTree skeletons and the MLS
 reference:
 
-```bash
+​```bash
 export EVO_DATA_ROOT=/path/to/EvoForkedTrees
-```
+​```
 
-The dataset layout expected under that root is defined in `config.DATASETS`.
+The expected layout under `$EVO_DATA_ROOT` is:
+
+​```text
+EvoForkedTrees/
+├── base_trunk_reference_dict.pkl   # MLS base-trunk reference, keyed by tree
+├── forked_reference_base_stem/     # MLS base-stem point clouds for the forked reference trees
+├── ManuallyCorrectedStems/         # manually corrected stems (reference setting)
+│   ├── Forked_ALS_AdTree_Output/   # AdTree skeleton PLYs, forked
+│   └── Unforked_ALS_AdTree_Output/ # AdTree skeleton PLYs, unforked
+├── ForInstanceV2/                  # pipeline 1 outputs
+│   ├── ValidInstances/             # trees passing instance segmentation
+│   │   ├── Forked/
+│   │   └── Unforked/
+│   └── ValidSemantic/              # trees passing wood-leaf classification
+│       ├── Forked/
+│       └── Unforked/
+└── FGI-EMIT/                       # pipeline 2 outputs
+    ├── ValidInstances/
+    │   ├── Forked/
+    │   └── Unforked/
+    └── ValidSemantic/
+        ├── Forked/
+        └── Unforked/
+​```
+
+Each leaf folder under a pipeline holds one `<name>_skeleton.ply` per tree, produced by the upstream skeletonisation step. `base_trunk_reference_dict.pkl` and `forked_reference_base_stem/` supply the MLS reference used for the base-trunk RMSE. The exact paths are defined in `config.DATASETS` and at the top of `config.py`, so edit them there if your folder names differ.
 
 Then open the notebook:
 
-```bash
+​```bash
 jupyter notebook reproduce.ipynb
-```
+​```
 
 
 ## Notebook
